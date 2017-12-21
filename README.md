@@ -1,2 +1,1 @@
 # ReduxBlog
-Redux blog app
