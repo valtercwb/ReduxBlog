@@ -9,10 +9,14 @@ import promise from 'redux-promise';
 //Route -> (work horse)A component that we can render inside of any other react component
 // provide configuration if the url is like this show these component else show those
 //BrowserRouter ->
-import { BrowserRouter , Route  }from 'react-router-dom';
+import { BrowserRouter , Route , Switch }from 'react-router-dom';
 
 import reducers from './reducers';
+
+//Routes
 import PostsIndex from './components/posts_index';
+import PostsNew from './components/posts_new';
+//
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -35,8 +39,12 @@ ReactDOM.render(
  
     <BrowserRouter>
       <div>
-      <Route path="/" component={ PostsIndex } />
+        <Switch>
+          <Route path="/posts/new" component={ PostsNew } />
+          <Route path="/" component={ PostsIndex } />
+        </Switch>
       </div>
+     
     </BrowserRouter>
   </Provider>
   , document.querySelector('.container'));
